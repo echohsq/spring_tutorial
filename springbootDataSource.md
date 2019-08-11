@@ -31,7 +31,9 @@
      - 代理类的优化（比如， 用invokestatic代替了invokevirtual
 
 **2. hikari配置类**
+
 ![hikari](images/hikari.jpg)
+
 **3.常用HikariCP配置参数**
 
 **常用配置（写在application.properties中）**
@@ -42,7 +44,9 @@
 - spring.datasource.hikari.maxLifetime=1800000
  ## druid数据库连接池使用说明
 **如何使用：**
+
  ![pomDruid](images/pomDruid.jpg)
+
 **常用配置（写在application.properties中）**
 1. Filter配置
 - spring.datasource.druid.filters=stat,config,wall,log4j(全部使用默认设置)
@@ -100,4 +104,6 @@ jdbcTemplate
 - Read-only status
 3. 代码示例：
 ```java
-void 
+void commit(TransactionStatus status) throws TransactionException;
+void rollback(TransactionStatus status) throws TransactionException;
+TransactionStatus getTransaction(@Nullable TransactionDefinition definition) throws TransactionException;

@@ -21,8 +21,11 @@
    - JdbcTemplateAutoConfiguration
 # ***数据池选择***
 ## HikariCP数据库连接池使用说明
+
 **如何使用：**
+
 ![pomHikari](images/pomHikari.jpg)
+
 **1. hikariCP为什么运行快**
    - 字节码级别的优化（很多方法通过JavaAssist生成）
    - 大量小改进

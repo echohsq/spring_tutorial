@@ -7,6 +7,7 @@
 ## 初始化内嵌数据库
 - spring.datasource.initialization-mode=embedded | always | never
 - spring.datasource.schema与spring.datasource.data确定初始化SQL文件
+- 在resource文件夹下配置schema.sql和data.sql文件即可被springBoot自动识别
 - spring.datasource.platform=hsqldb | h2 | oracle | mysql | postgresql
 # ***多数据源配置*** 
 ### **注意：**
@@ -54,9 +55,9 @@
 1. Filter配置
 - spring.datasource.druid.filters=stat,config,wall,log4j(全部使用默认设置)
 2. 密码加密
-- spring.datasource.password=<加密密码>
+- spring.datasource.password=加密密码
 - spring.datasource.druid.filter.config.enabled=true
-- spring.datasource.druidconnection-properties=config.decrypt=true;config.decrypt.key=<public-key>
+- spring.datasource.druidconnection-properties=config.decrypt=true;config.decrypt.key=public-key
 3. SQL防注入
 - spring.datasource.druid.filter.wall.enabled=true
 - spring.datasource.druid.filter.wall.db-type=h2

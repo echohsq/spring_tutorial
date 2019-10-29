@@ -1,3 +1,10 @@
+# ***SpringBoot对数据源的自动配置***
+## **DataSourceAutoConfiguration**
+ - 配置DataSource（标题为类名）
+## **DataSourceTransactionManagerAutoConfiguration**
+ - 配置DataSourceTransactionManager（标题为类名）
+## **JdbcTemplateAutoConfiguration**
+ - 配置jdbcTemplate（标题为类名）
 # ***单数据源相关配置属性***
 ## 通用
 - spring.datasource.url=jdbc:mysql://localhost/test
@@ -16,10 +23,18 @@
 - 有多个DataSource时系统如何判断
 - 对应的设施（事务，ORM等）如何选择DataSource
 ### **方法：**
+- 配置@Primary类型的Bean，springboot的配置将主要围绕有@Primay的bean
 - 屏蔽掉spring对DataSource和transaction的封装：
    - DataSourceAutoConfiguration
    - DataSourceTransactionManagerAutoConfiguration
    - JdbcTemplateAutoConfiguration
+```java
+@SpringBootApplication(exclude = { DataSourceAutoConfiguration.class, DataSourceTransactionManagerAutoConfiguration.class, JdbcTemplateAutoConfiguration.class})
+@slf4j
+public class MultiDataSourceDemoApplication{
+   ...
+}
+```
 # ***数据池选择***
 ## HikariCP数据库连接池使用说明
 
@@ -68,30 +83,11 @@
 - 用于定制连接池操作的各种环节
 - 可以继承FilterEventAdapter以便方便地实现Filter
 - 修改META-INF/druid-filter.properties增加Filter配置
-# ***spring的JDBC操作类***
-## spring-jdbc
-- core，jdbcTemplate等相关核心接口和类
-- datasource，数据源相关的辅助类
-- object，将基本的JDBC操作封装成对象
-- support，错误码等其他辅助工具
-## 常用的bean注解
-通过注解来定义Bean
-- @Component：通用注解
-- @Repository：dao，数据操作的一个仓库
-- @Service：业务的服务，可以使用Service注解
-- @Controller：springMVC，使用Controller注解
-- @RestController：开发Restful应用
-##  jdbcTemplate
-- query
-- queryForObject
-- queryForList
-- queryForMap
-- update
-- execute
 ## SQL批处理
 jdbcTemplate
 - batchUpdate
-  - BatchPreparedStatementSetter
-- NamedParameterJdbcTemplate
+  - BatchPreparedStatementSetter 通过设置getBatchSize()函数来设置批处理操作要插入的条数。
+
 - batchUpdate
-  - SqlParameterSourceUtils.createBatch
+  -  NamedParameterJdbcTemplate 
+     - SqlParameterSourceUtils.createBatch（list）传入一个数据list来批处理插入数据。

@@ -27,11 +27,12 @@ PROPAGATION_NOT_SUPPORTED | 4 | 不支持事务，按非事务方式运行
 PROPAGATION_NEVER | 5 | 不支持事务，如果有事务则抛异常
 PROPAGATION_NESTED | 6 | 当前有事务就在当前事务里再起一个事务
 ## ***编程式事务***    
-TransactionTemplate
+TransactionTemplate （类）
 - TransactionCallback
 - TransactionCallbackWithoutResult
 PlatformTransactionManager
 - 可以传入TransactionDefinition进行定义事务属性
-## ***声明式事务***
+## ***声明式事务 （基于注解的配置方式）***
 ![transaction](images/transaction.jpg)
 声明式事务，spring主要通过AOP实现。
+### **开启事务注解的方式**

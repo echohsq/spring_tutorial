@@ -1,0 +1,20 @@
+# ***spring的JDBC操作类***
+## spring-jdbc（包）
+- core，jdbcTemplate等相关核心接口和类
+- datasource，数据源相关的辅助类
+- object，将基本的JDBC操作封装成对象
+- support，错误码等其他辅助工具
+## 常用的bean注解
+通过注解来定义Bean
+- @Component：通用注解
+- @Repository：dao，数据操作的一个仓库
+- @Service：业务的服务，可以使用Service注解
+- @Controller：springMVC，使用Controller注解
+- @RestController：开发Restful应用
+##  jdbcTemplate
+- query
+- queryForObject
+- queryForList
+- queryForMap
+- update（插入，修改，删除）
+- execute

@@ -11,10 +11,13 @@
 - @Service：业务的服务，可以使用Service注解
 - @Controller：springMVC，使用Controller注解
 - @RestController：开发Restful应用
-##  jdbcTemplate
+##  jdbc   Template
 - query
 - queryForObject
 - queryForList
 - queryForMap
 - update（插入，修改，删除）
 - execute
+- 批量上传 
+  - jdbcTemplate.batchUpdate("INSERT INTO FOO(BAR) VALUES (?);", new BatchPreparedStatementSetter(){})
+  - List<T> list ; namedParameterJdbcTemplate.batchUpdate("INSERT INTO FOO(BAR) VALUES(: bar);", SqlParameterSourceUtils.createBatch(list));

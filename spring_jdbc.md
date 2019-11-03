@@ -21,3 +21,14 @@
 - 批量上传 
   - jdbcTemplate.batchUpdate("INSERT INTO FOO(BAR) VALUES (?);", new BatchPreparedStatementSetter(){})
   - List<T> list ; namedParameterJdbcTemplate.batchUpdate("INSERT INTO FOO(BAR) VALUES(: bar);", SqlParameterSourceUtils.createBatch(list));
+
+## spring对于jdbc的异常处理
+
+![](/Volumes/moveDisk/files/markdown/spring_tutorial/images/jdbc_exception.png)
+
+Spring会将数据操作的异常转换为DataAccessException，无论使用何种数据处理方式，都是用一样的处理异常。
+
+Spring 将对不同数据库的处理放在了，sql-error-code.xml文件和sqlErrorCode.java下进行处理。
+
+**定义错误码解析逻辑**
+

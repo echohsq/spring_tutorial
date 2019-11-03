@@ -91,3 +91,9 @@ jdbcTemplate
 - batchUpdate
   -  NamedParameterJdbcTemplate 
      - SqlParameterSourceUtils.createBatch（list）传入一个数据list来批处理插入数据。
+
+# 多数据源、分库分表、读写分离的关系
+
+分库分表多使用数据中间件。
+
+多数据源：读写分离。

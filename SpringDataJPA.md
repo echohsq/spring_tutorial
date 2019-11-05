@@ -35,3 +35,57 @@
 </dependency>
 ```
 
+### 常用JPA注解：
+
+**实体**
+
+- @Entity（实体标注） @MappedSuperclass（父类标注）
+- @Table（name)
+
+**主键**
+
+- @Id
+  - @GeneratedValue（strategy，generator）（主键生成策略）
+  - @SequenceGenerator（name，sequenceName）（主键序列类型）
+
+**举例**
+
+```java
+@Entity(name = "Product")
+public static class Product {
+  @Id
+  @GeneratedValue(
+          strategy = GenerationType.SEQUENCE,
+          generator = "sequence-generator"
+  )
+  @SequenceGenerator(
+          name = "sequence-generator",
+          sequenceName = "product_sequence"
+  )
+  private Long id;
+  
+  @Column(name = "product_name")
+  private String name;
+}
+```
+
+**映射**
+
+- @Column（name, nullable, length, insertable, updatable)
+- @JoinTable(name), @JoinColumn(name)
+
+**关系**
+
+- @OneToOne, @OneToMany, @ManyToOne, @ManyToMany
+- @OrderBy
+
+## 使用Lombok
+
+**常用功能**
+
+- @Getter / @Setter
+- @ToString
+- @NoArgsConstructor / @RequiredArgsConstructor / @AllArgsConstructor
+- @Data (混合注解包括getter和setter)
+- @Builder
+- @Slf4j / @CommonsLog / @Log4j2

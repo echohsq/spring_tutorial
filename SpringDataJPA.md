@@ -2,7 +2,7 @@
 
 在保留底层存储特性的同时，提供相对一致的、基于Spring的编程模型
 
-## 主要模块
+## （一）主要模块
 
 - Spring Data Commons
 - Spring Data JDBC
@@ -79,7 +79,7 @@ public static class Product {
 - @OneToOne, @OneToMany, @ManyToOne, @ManyToMany
 - @OrderBy
 
-## 使用Lombok
+## （二）使用Lombok
 
 **常用功能**
 
@@ -89,3 +89,36 @@ public static class Product {
 - @Data (混合注解包括getter和setter)
 - @Builder
 - @Slf4j / @CommonsLog / @Log4j2
+
+## （三）使用Spring JPA来操作数据库
+
+### Repository:
+
+**开启注解**
+
+@EnableJpaRepositories
+
+**定义接口继承以下接口即可使用，无需定义实现类**
+
+- CrudRepository<T, ID>
+- PagingAndSortingRepository<T, ID>
+- JpaRepository<T, ID>
+
+### 定义查询：
+
+**根据方法名定义查询**
+
+- find...By... / read...By... / query...By... / get...By...
+- Count...By...
+- ...OrderBy... [Asc / Desc]
+- And / Or / IgnoreCase
+- Top / First / Distinct
+
+### 分页查询：
+
+- PagingAndSortingRepository<T, ID>
+- Pageable / Sort
+- Slice\<T\> / Page\<T\>
+
+
+

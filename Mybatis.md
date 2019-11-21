@@ -26,3 +26,62 @@
 - @MapperScan 配置扫描位置
 - @Mapper 定义接口
 - 映射的定义： --XML和注解
+
+# 让MyBatis更好用的工具
+
+## 认识MyBatis Generator
+
+MyBatis Generator（http://www.mybatis.org/generator）
+
+- MyBatis代码生成器
+- 根据数据库表生成相关代码
+  - POJO
+  - Mapper接口
+  - SQL Map XML
+
+## 配置MyBatis Generator
+
+**generator Configuration**
+
+**context**
+
+- jdbcConnection
+- javaModelGenerator
+- sqlMapGenerator
+- javaClientGenerator (ANOTATEDMAPPER / XMLMAPPER / MIXDEAPPER)
+- table 
+
+## 生成时可以使用的插件
+
+### 内置插件都在org.mybatis.generator.plugins包中：
+
+- FluentBuilderMethodsPlugin
+- ToStringPlugin
+- SerializablePlugin
+- RowBoundsPlugin //提供分页方法
+- ......
+
+### 使用生成的对象
+
+- 简单操作，直接使用生成的xxxMapper的方法。
+- 复杂查询，使用生成的xxxExample对象。
+
+
+
+```java
+Coffee latte = new Coffee() // FluentBuilderMethodsPlugin方法实现withxxx
+                 .withName("latte")
+                 .withPrice(Money.of(CurrencyUnit.of("CNY"), 30.0))
+                 .withCreateTime(new Date())
+                 .withUpdateTime(new Date());
+coffeeMapper.insert(latte);
+
+Coffee s = coffeeMapper.selectByPrimaryKey(1L);
+log.into("Coffee {}", s);
+
+CoffeeExample example = new CoffeeExample();
+example.createCriteria().andNameEqualTo("latte"); //创建查找条件  
+List<Coffee> list = coffeeMapper.selectByExample(example);
+list.foreach(e -> log.info("selectByExample: {}", e));
+```
+

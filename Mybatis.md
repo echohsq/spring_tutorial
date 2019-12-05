@@ -39,6 +39,19 @@ MyBatis Generator（http://www.mybatis.org/generator）
   - Mapper接口
   - SQL Map XML
 
+## 运行MyBatis Generator
+
+命令行
+
+- java -jar mybatis-generator-core-x.x.x.jar -configfile generatorConfig.xml
+
+Maven Plugin (mybatis-generator-maven-plugin)
+
+- mvn mybatis-generator:generate
+- ${basedir}/src/main/resources/generatorConfig.xml
+
+java程序
+
 ## 配置MyBatis Generator
 
 **generator Configuration**
@@ -85,3 +98,11 @@ List<Coffee> list = coffeeMapper.selectByExample(example);
 list.foreach(e -> log.info("selectByExample: {}", e));
 ```
 
+## 认识Page Helper
+
+**Mybatis PageHelper(https://pagehelper.github.io)**
+
+- 支持多种数据库
+- 支持多种分页方式
+- SpringBoot支持（https://github.com/pagehelper/pagehelper-spring-boot）
+  - Pagehelper-spring-boot-starter

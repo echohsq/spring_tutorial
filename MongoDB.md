@@ -55,3 +55,16 @@
 ```java
 spring.data.mongodb.uri=mongodb://springbucks:springbucks@localhost:27017/springbucks
 ```
+
+前两个springbucks分别指向用户名和密码。
+
+## spring Data MongoDB 的 Repository
+
+@EnableMongoRepositories
+
+**对应接口**
+
+- MongoRepository<T, ID>
+- PagingAndSortingRepository<T, ID>
+- CrudRepository<T, ID>
+

@@ -99,7 +99,7 @@ testBeanX(bar) 未被增强。
 在父上下文开启了增强，父的 bean 均被增强，而子的 bean 未被增强。
 
 \----------
- 
+
 场景二：
 父上下文开启 @EnableAspectJAutoProxy 的支持
 子上下文开启 <aop: aspectj-autoproxy />
